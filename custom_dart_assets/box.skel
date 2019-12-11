@@ -1,0 +1,42 @@
+<?xml version="1.0" ?>
+<skel version="1.0">
+    <world name="box world">
+        <physics>
+            <time_step>0.002</time_step>
+            <gravity>0 -9.81 0</gravity>
+            <collision_detector>bullet</collision_detector>
+        </physics>
+
+        <skeleton name="box skeleton">
+            <body name="box">
+                <inertia>
+                    <mass>1</mass>
+                    <offset>0.0 0 0.0</offset>
+                </inertia>
+                <transformation>-1.0 0.0 0 0 0 0</transformation>
+                <visualization_shape>
+                    <transformation>0 0 0 0 0 0</transformation>
+                    <geometry>
+                        <box>
+                            <size>0.5 0.5 0.5</size>
+                        </box>
+                    </geometry>
+                    <color>0.5 0.5 0.5 1.0</color>
+                </visualization_shape>
+                <collision_shape>
+                    <transformation>0 0 0 0 0 0</transformation>
+                    <geometry>
+                        <box>
+                            <size>0.5 0.5 0.5</size>
+                        </box>
+                    </geometry>
+                </collision_shape>
+            </body>
+            <joint type="free" name="joint 1">
+                <parent>world</parent>
+                <child>box</child>
+            </joint>
+        </skeleton>
+    </world>
+</skel>
+

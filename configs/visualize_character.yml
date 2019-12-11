@@ -1,0 +1,8 @@
+walker2d_reg:
+  skel_file: './custom_dart_assets/walker2d_reg.skel'
+
+ostrich2d:
+  skel_file: './custom_dart_assets/ostrich2d.skel'
+
+pendulum2d:
+  skel_file: './custom_dart_assets/pendulum2d.skel'

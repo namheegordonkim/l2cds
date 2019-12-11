@@ -221,12 +221,8 @@ class OptimizerFactoryDummy(OptimizerFactory):
 
 
 def throw_box(env, throw_from):
-    strength = np.random.uniform(3, 4)
-    # x_displacement = np.random.uniform(1, 2)
     x_displacement = 5
     x_displacement = x_displacement * throw_from
-
-    # y_displacement = np.random.uniform(3, 4)
     y_displacement = 3
     walker_x, walker_y = env.robot_skeleton.q[0:2]
     box_x = walker_x + x_displacement
@@ -267,35 +263,6 @@ def reflect_control_vector(v):
     return ret
 
 
-def expand_reference_motion(kin_data: np.ndarray, sim_freq=25, max_phase=20, speed=1.0):
-    t = 0.002 * sim_freq * max_phase / 100.0
-
-    n, d = kin_data.shape
-
-    # get position
-    interpolated_arrays = []
-    for i in range(n - 1):
-        current = kin_data[i, :]
-        next = kin_data[i + 1, :]
-        interpolated = interpolate_arrays(current, next)
-        interpolated_arrays.append(interpolated)
-    expanded_reference_position = np.concatenate(interpolated_arrays, axis=0)
-
-    n_ref_frames, _ = expanded_reference_position.shape
-    expanded_reference_velocity = np.zeros([n_ref_frames, d])
-
-    # get velocity
-    for i in range(n - 1):
-        expanded_reference_velocity[i, :] = (expanded_reference_position[i + 1, :] -
-                                             expanded_reference_position[i, :]) / t
-        expanded_reference_velocity[i, 0] *= speed
-
-    expanded_reference_velocity[-1, :] = (expanded_reference_position[0, :] - expanded_reference_position[-1, :]) / t
-    expanded_reference_velocity[-1, 0] = 0.1 / 10.0 / t * speed
-
-    return expanded_reference_position, expanded_reference_velocity
-
-
 def interpolate_arrays(arr1: np.ndarray, arr2: np.ndarray, n_results=10):
     """
     Given two rank-1 np.ndarrays, compute np.ndarrays of same interval to fit a linear space between the two.
@@ -312,3 +279,5 @@ def interpolate_arrays(arr1: np.ndarray, arr2: np.ndarray, n_results=10):
         interpolated[i, :] = arr1 + i * beta
 
     return interpolated
+
+

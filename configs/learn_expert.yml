@@ -1,0 +1,15 @@
+ostrich2d:
+  optim: "ppo"
+  state_dim: 22
+  action_dim: 8
+  skel_file: "./custom_dart_assets/ostrich2d.skel"
+  save_every: 100
+
+walker2d_reg:
+  optim: "ppo"
+  state_dim: 18
+  action_dim: 6
+  skel_file: "./custom_dart_assets/walker2d_reg.skel"
+  save_every: 100
+
+

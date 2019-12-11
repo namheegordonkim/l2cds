@@ -1,0 +1,24 @@
+pendulum2d:
+  num_examples: 100000
+  reset_every: 200
+  push_scale: 4
+  noise_scale: 1.0e+1
+  mirror: false
+
+ostrich2d:
+  expert_path: "./experts/ostrich2d_expert.pkl"
+  skel_file: "./custom_dart_assets/ostrich2d.skel"
+  num_examples: 100000
+  reset_every: 200
+  push_scale: 1
+  noise_scale: 5.0e-2
+  mirror: true
+
+walker2d_reg:
+  expert_path: "./experts/walker2d_reg_expert.pkl"
+  skel_file: "./custom_dart_assets/walker2d_reg.skel"
+  num_examples: 100000
+  reset_every: 200
+  push_scale: 1
+  noise_scale: 5.0e-2
+  mirror: true

@@ -9,9 +9,8 @@ import torch.cuda
 from baselines.common.vec_env import VecEnv
 from sklearn.preprocessing import StandardScaler
 from torch import nn
-from tqdm import tqdm
 
-from models import BBoxNet, NNet
+from models import NNet
 from utils.containers import ModelDict, EnvsContainer, DataDict
 from utils.datasets import ExperienceTuple, DatasetSARS, TupleSARS
 from utils.keys import ModelKey, DataKey
@@ -246,11 +245,8 @@ def compute_cumulative_rewards_matrix(value_predictions_matrix, next_states_matr
 
             if done or j >= t - 1:
                 rewards_array = rewards_matrix[i, start:j + 1]
-                value_predictions_array = value_predictions_matrix[i, start:j + 1]
 
                 cumulative_rewards_array = compute_cumulative_rewards_array(cumulative_reward, rewards_array, 0.99)
-                # cumulative_rewards_array = compute_gae_array(cumulative_reward, value_predictions_array, rewards_array,
-                #                                              0.99, 0.95)
                 cumulative_rewards_matrix[i, start:j + 1] = cumulative_rewards_array
                 start = j + 1
 

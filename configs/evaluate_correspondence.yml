@@ -1,0 +1,23 @@
+walker2d_to_ostrich2d:
+  dataset_paths: ['./data/ostrich2d_0001000.pkl', './data/walker2d_reg_0001000.pkl']
+  alpha_models_path: "./good_results/ostrich2d_to_walker2d_alpha_model_dicts_0000100_00.pkl"
+
+walker2d_to_ostrich2d_nofdpv:
+  dataset_paths: ['./data/ostrich2d_0001000.pkl', './data/walker2d_reg_0001000.pkl']
+  alpha_models_path: "./good_results/ostrich2d_to_walker2d_nofdpv_alpha_model_dicts_0000100_00.pkl"
+
+walker2d_to_ostrich2d_nonn:
+  dataset_paths: ['./data/ostrich2d_0001000.pkl', './data/walker2d_reg_0001000.pkl']
+  alpha_models_path: "./good_results/ostrich2d_to_walker2d_nonn_alpha_model_dicts_0000100_00.pkl"
+
+walker2d_to_ostrich2d_nonoise:
+  dataset_paths: ['./data/ostrich2d_0001000.pkl', './data/walker2d_reg_0001000.pkl']
+  alpha_models_path: "./good_results/ostrich2d_to_walker2d_nonoise_alpha_model_dicts_0000100_00.pkl"
+
+walker2d_to_ostrich2d_nonoise_nofdpv:
+  dataset_paths: ['./data/ostrich2d_0001000.pkl', './data/walker2d_reg_0001000.pkl']
+  alpha_models_path: "./good_results/ostrich2d_to_walker2d_nonoise_nofdpv_alpha_model_dicts_0000100_00.pkl"
+
+walker2d_to_ostrich2d_nonoise_nonn:
+  dataset_paths: ['./data/ostrich2d_0001000.pkl', './data/walker2d_reg_0001000.pkl']
+  alpha_models_path: "./good_results/ostrich2d_to_walker2d_nonoise_nonn_alpha_model_dicts_0000100_00.pkl"

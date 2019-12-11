@@ -1,0 +1,4 @@
+ostrich2d_to_walker2d:
+  model_dicts_path: "./output/ostrich2d_to_walker2d_alpha_model_dicts_0000002_02.pkl"
+  data_dict_path: "./data/ostrich2d_to_walker2d_encoded_states.pkl"
+  skel_files: ["./custom_dart_assets/ostrich2d.sdf", "./custom_dart_assets/walker2d_reg.skel"]

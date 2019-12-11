@@ -125,7 +125,7 @@ class RLLearner:
 
             if episode % self.save_every == 0:
                 # save model
-                model_save_path = "{:s}_model_container_{:07d}.pkl".format(self.output_prefix, episode)
+                model_save_path = "{:s}_model_dict_{:07d}.pkl".format(self.output_prefix, episode)
                 torch.save(self.model_dict, model_save_path)
                 reward_mean, reward_std = self.reward_getter.get_cumulative_reward()
                 reward_means.append(reward_mean)
@@ -248,7 +248,9 @@ class SimpleSeqRLLearner(RLLearner):
 
 
 class ActionGetter:
-
+    """
+    Deal with action per timestep
+    """
     @abstractmethod
     def get_action(self, state):
         raise NotImplementedError

@@ -1,0 +1,3 @@
+ostrich2d_to_walker2d:
+  model_dicts_path: "./output/ostrich2d_to_walker2d_alpha_model_dicts_0000002_02.pkl"
+  data_dict_paths: ["./data/ostrich2d_0001000.pkl", "./data/walker2d_reg_0001000.pkl"]

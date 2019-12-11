@@ -1,0 +1,45 @@
+walker2d_to_pendulum2d:
+  model_dicts_path: './output/walker2d_to_pendulum2d_alpha_model_dicts_0000150_00.pkl'
+  expert_dict_path: './experts/walker2d_reg_ppo_model_container_0004600.pkl'
+
+pendulum2d_to_walker2d:
+  model_dicts_path: './output/walker2d_to_pendulum2d_alpha_model_dicts_0000150_00.pkl'
+  expert_dict_path: './experts/walker2d_reg_ppo_model_container_0004600.pkl'
+
+ostrich2d_to_pendulum2d:
+  model_dicts_path: './output/ostrich2d_to_pendulum2d_alpha_model_dicts_0000000_00.pkl'
+  expert_dict_path: "./experts/ostrich2d_model_container_0006600.pkl"
+
+pendulum2d_to_ostrich2d:
+  model_dicts_path: './output/ostrich2d_to_pendulum2d_alpha_model_dicts_0000000_00.pkl'
+  expert_dict_path: "./experts/ostrich2d_model_container_0006600.pkl"
+
+ostrich2d_to_walker2d:
+  model_dicts_path: './output/ostrich2d_to_walker2d_alpha_model_dicts_0000011_00.pkl'
+  expert_dict_path: "./experts/ostrich2d_expert.pkl"
+
+ostrich2d_to_walker2d_seeds:
+  model_dicts_paths: [
+    './output/ostrich2d_to_walker2d_alpha_model_dicts_0000090_00.pkl',
+    './output/ostrich2d_to_walker2d_alpha_model_dicts_0000090_01.pkl',
+    './output/ostrich2d_to_walker2d_alpha_model_dicts_0000090_02.pkl',
+    './output/ostrich2d_to_walker2d_alpha_model_dicts_0000090_03.pkl',
+    './output/ostrich2d_to_walker2d_alpha_model_dicts_0000090_04.pkl'
+  ]
+  data_dict_paths: ['./data/ostrich2d_0010000.pkl', './data/walker2d_reg_0010000.pkl']
+  expert_dict_path: "./experts/ostrich2d_model_container_0006600.pkl"
+
+walker2d_to_ostrich2d:
+  model_dicts_path: './output/ostrich2d_to_walker2d_alpha_model_dicts_0000011_00.pkl'
+  expert_dict_path: './experts/walker2d_reg_expert.pkl'
+
+walker2d_to_ostrich2d_seeds:
+  model_dicts_paths: [
+    './output/ostrich2d_to_walker2d_alpha_model_dicts_0000090_00.pkl',
+    './output/ostrich2d_to_walker2d_alpha_model_dicts_0000090_01.pkl',
+    './output/ostrich2d_to_walker2d_alpha_model_dicts_0000090_02.pkl',
+    './output/ostrich2d_to_walker2d_alpha_model_dicts_0000090_03.pkl',
+    './output/ostrich2d_to_walker2d_alpha_model_dicts_0000090_04.pkl'
+  ]
+  data_dict_paths: ['./data/walker2d_reg_0010000.pkl', './data/ostrich2d_0010000.pkl']
+  expert_dict_path: './experts/walker2d_reg_ppo_model_container_0004600.pkl'

@@ -1,0 +1,41 @@
+walker2d_to_pendulum2d:
+  latent_state_dim: 2
+  latent_hidden_dims: [256, 256]
+  dataset_paths: ['./data/walker2d_reg_0100000.pkl', './data/pendulum2d_1.0_200_0100000.pkl']
+  num_episodes: 100
+  num_epochs: 1000
+  save_every: 1
+  batch_size: 4096
+  nn_weight: 1
+  ae_weight: 1
+  fd_weight: 1
+  pv_weight: 1
+  noise_scale: 1.0e-1
+
+ostrich2d_to_pendulum2d:
+  latent_state_dim: 2
+  latent_hidden_dims: [256, 256]
+  dataset_paths: ['./data/ostrich2d_0100000.pkl', './data/pendulum2d_1.0_200_0100000.pkl']
+  num_episodes: 100
+  num_epochs: 1000
+  save_every: 1
+  batch_size: 4096
+  nn_weight: 1
+  ae_weight: 1
+  fd_weight: 1
+  pv_weight: 1
+  noise_scale: 1.0e-1
+
+ostrich2d_to_walker2d:
+  latent_state_dim: 8
+  latent_hidden_dims: [256, 256]
+  dataset_paths: ['./data/ostrich2d_0100000.pkl', './data/walker2d_reg_0100000.pkl']
+  num_episodes: 50000
+  num_epochs: 1000
+  save_every: 1
+  batch_size: 4096
+  nn_weight: 1
+  ae_weight: 1
+  fd_weight: 1.0e+3
+  pv_weight: 1.0e+3
+  noise_scale: 5.0e-3

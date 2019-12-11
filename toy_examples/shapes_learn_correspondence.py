@@ -75,10 +75,6 @@ def main():
         torch.save(model_dicts, model_path)
         print("Saved models to {:s}".format(model_path))
 
-        # fig_path = "./torch_model/shapes_figure_{:07d}.pkl".format(episode)
-        # plt.savefig(fig_path)
-        # plt.close()
-
 
 if __name__ == "__main__":
     seed = 2

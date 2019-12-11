@@ -1,0 +1,59 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+        <model name="pendulum">
+            <pose>0 -1.0 0 0.0 0.0 0.0</pose>
+            <static>false</static>
+            
+            <link name="pole">
+                <pose>0.0 0.0 0.0 0 0.0 0.0</pose>
+                <inertial>
+                    <mass>10</mass>
+                </inertial>
+                <visual>
+                    <pose>0.0 -0.60 0.0 -1.57079632679 0.0 0.0</pose>
+                    <geometry>
+                        <cylinder>
+                            <length>1.2</length>
+                            <radius>0.02</radius>
+                        </cylinder>
+                    </geometry>
+                </visual>
+                <visual_shape>
+                    <pose>0.0 -0.60 0.0 -1.57079632679 0.0 0.0</pose>
+                    <geometry>
+                        <cylinder>
+                            <length>1.2</length>
+                            <radius>0.02</radius>
+                        </cylinder>
+                    </geometry>
+                </visual_shape>
+            </link>
+
+            <link name="pole_aux">
+                <pose> 0.0 0 0 0 0 0</pose>
+                <inertial>
+                    <mass>0.000001</mass>
+                </inertial>
+            </link>
+
+            <joint type="prismatic" name="j_axis_x">
+                <parent>world</parent>
+                <child>pole_aux</child>
+                <axis>
+                      <xyz>1.0 0.0 0.0</xyz>
+                </axis>
+            </joint>
+
+            <joint type="revolute" name="j_pole">
+                <parent>pole_aux</parent>
+                <child>pole</child>
+                <axis>
+                      <xyz>0.0 0.0 1.0</xyz>
+                      <dynamics>
+                          <damping>1.0</damping>
+                      </dynamics>
+                </axis>
+            </joint>
+
+        </model>
+</sdf>

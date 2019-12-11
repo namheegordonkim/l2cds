@@ -4,7 +4,7 @@ from enum import Enum
 class ModelKey(Enum):
     state_encoder = 0
     state_decoder = 1
-    canonical_actor = 2
+    latent_actor = 2
     encoded_velocity_predictor = 3
     action_decoder = 4
     state_scaler = 5
