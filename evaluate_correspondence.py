@@ -2,8 +2,6 @@ import argparse
 from typing import List, Dict
 
 import numpy as np
-import pandas as pd
-import seaborn as sns
 import torch
 import yaml
 from scipy.spatial import distance_matrix
@@ -11,8 +9,6 @@ from scipy.spatial import distance_matrix
 from utils.containers import DataDict, ModelDict
 from utils.keys import ModelKey, DataKey
 from utils.walker2d_evaluate import correspond
-
-sns.set(style="darkgrid")
 
 
 def get_symmetric_nn_distance(source, target):
@@ -89,11 +85,7 @@ def main():
         data_dicts: List[DataDict] = [torch.load(path) for path in dataset_paths]
         alpha_model_dict_pairs: List[Dict[ModelDict]] = [torch.load(path, map_location="cpu") for path in
                                                          alpha_models_paths]
-        n_seeds = len(alpha_model_dict_pairs)
-
         character_names = ["O", "W"]
-        df = pd.DataFrame()
-        df["experiment"] = np.repeat(experiment_name, n_seeds)
         # plt.figure()
         for source_idx in range(2):
             target_idx = 1 - source_idx
@@ -116,15 +108,12 @@ def main():
                 "{:s}L{:s}: {:.2f} ({:.2f})".format(source_character_name, source_character_name,
                                                     np.mean(sls_distances),
                                                     np.std(sls_distances)))
-            df["{:s}L{:s}".format(source_character_name, source_character_name)] = sls_distances
 
             source_states = source_data_dict.get(DataKey.states)
             corresponded_states_list = get_source_latent_target_latent_sources(source_states, source_model_dicts,
                                                                                target_model_dicts)
 
             sltls_distances = get_symmetric_nn_distances(source_states, corresponded_states_list)
-            df["{:s}L{:s}L{:s}".format(source_character_name, target_character_name,
-                                       source_character_name)] = sltls_distances
             print("{:s}L{:s}L{:s}: {:.2f} ({:.2f})".format(source_character_name, target_character_name,
                                                            source_character_name, np.mean(sltls_distances),
                                                            np.std(sltls_distances)))
@@ -134,12 +123,8 @@ def main():
             corresponded_states_list = get_source_latent_targets(target_states, target_model_dicts,
                                                                  source_model_dicts)
             tls_distances = get_symmetric_nn_distances(source_states, corresponded_states_list)
-            df["{:s}L{:s}".format(target_character_name, source_character_name)] = tls_distances
             print("{:s}L{:s}: {:.2f} ({:.2f})".format(target_character_name, source_character_name,
                                                       np.mean(tls_distances), np.std(tls_distances)))
-        dfs.append(df)
-    big_df = pd.concat(dfs)
-    big_df.to_csv("./data/errors.csv")
 
 
 if __name__ == "__main__":
