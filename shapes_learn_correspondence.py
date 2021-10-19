@@ -8,17 +8,16 @@ from sklearn.preprocessing import StandardScaler
 from torch import nn
 from torch.nn import MSELoss
 
-# To avoid manipulating PYTHONPATH, add leading dots
-from ..utils.containers import DataDict, ModelDict
-from ..utils.keys import DataKey, ModelKey, TensorKey
-from ..utils.loss_calculators import LossCalculatorSum, LossCalculatorInputTarget, LossCalculatorNearestNeighborL2
-from ..models import NNet, ScalerWrapper
-from ..utils.learners import HeterogeneousLearner
-from ..utils.radam import RAdam
+from utils.containers import DataDict, ModelDict
+from utils.keys import DataKey, ModelKey, TensorKey
+from utils.loss_calculators import LossCalculatorSum, LossCalculatorInputTarget, LossCalculatorNearestNeighborL2
+from models import NNet, ScalerWrapper
+from utils.learners import HeterogeneousLearner
+from utils.radam import RAdam
 import numpy as np
 
-from ..utils.tensor_collectors import TensorListGetterOneToOne, TensorCollector
-from ..utils.tensor_inserters import TensorInserterSeq, TensorInserterTensorizeScaled, TensorInserterForward
+from utils.tensor_collectors import TensorListGetterOneToOne, TensorCollector
+from utils.tensor_inserters import TensorInserterSeq, TensorInserterTensorizeScaled, TensorInserterForward
 
 
 def main():
