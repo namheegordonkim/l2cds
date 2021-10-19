@@ -89,7 +89,7 @@ def convert(model_dict1, model_dict2, points1):
     points2_decoder = model_dict2.get(ModelKey.state_decoder)
 
     points1_tensor = torch.as_tensor(points1).float()
-    points1_scaled_tensor = points1_scaler.forward(points1_tensor)
+    points1_scaled_tensor = points1_scaler.forward(points1_tensor).cpu()
     points1_encoded_tensor, _ = points1_encoder.forward(points1_scaled_tensor)
     points1_encoded = points1_encoded_tensor.detach().cpu().numpy()
 
