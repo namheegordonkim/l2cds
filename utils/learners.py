@@ -22,8 +22,7 @@ class HomogeneousLearner:
         self.loss_calculator = loss_calculator
         self.n_epochs = n_epochs
 
-    def train_one_episode(self, data_dict: DataDict, model_dict: ModelDict,
-                          batch_size=64):
+    def train_one_episode(self, data_dict: DataDict, model_dict: ModelDict, batch_size=64):
 
         # shuffle data dicts
         random_idx = np.random.choice(range(data_dict.n_examples), data_dict.n_examples, replace=False)
@@ -112,9 +111,9 @@ class HeterogeneousLearner:
         n_batches = int(n_examples / batch_size)
         batch_idxs = np.array_split(np.random.choice(np.arange(n_examples), n_examples, replace=False),
                                     n_batches)
-        epoch_loss = torch.scalar_tensor(0)
+        epoch_loss = torch.scalar_tensor(0).to(device)
 
-        for batch_idx in tqdm(batch_idxs):
+        for batch_idx in batch_idxs:
             tensor_dicts = self.tensor_collector.get_tensor_dicts(data_dicts, model_dicts, batch_idx)
             loss = self.loss_calculator.get_loss(tensor_dicts).to(device)
 
