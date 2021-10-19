@@ -1,6 +1,6 @@
 """
 Use reinforcement learning to train any DART environment.
-Utilize VecEnv from OpenAI Baselines to take advantage of parallelism.
+Utilize VecEnv to take advantage of parallelism.
 """
 
 import argparse
@@ -9,8 +9,8 @@ import os
 import numpy as np
 import torch
 import yaml
-from baselines.common.vec_env import DummyVecEnv, ShmemVecEnv
 from sklearn.preprocessing import StandardScaler
+from stable_baselines3.common.vec_env import DummyVecEnv, SubprocVecEnv
 from torch import nn
 
 from models import NNet, ScalerWrapper, TwoHandedNet
@@ -217,7 +217,7 @@ def get_envs(factory, dummy=False):
     if dummy:
         envs = DummyVecEnv(envs)
     else:
-        envs = ShmemVecEnv(envs)
+        envs = SubprocVecEnv(envs)
     return env, envs
 
 
