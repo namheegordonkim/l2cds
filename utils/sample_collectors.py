@@ -6,8 +6,8 @@ from typing import List
 import gym
 import numpy as np
 import torch.cuda
-from baselines.common.vec_env import VecEnv
 from sklearn.preprocessing import StandardScaler
+from stable_baselines3.common.vec_env import VecEnv
 from torch import nn
 
 from models import NNet

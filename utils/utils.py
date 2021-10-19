@@ -7,7 +7,7 @@ import pygame
 import torch
 import torch.multiprocessing as mp
 import yaml
-from baselines.common.vec_env import SubprocVecEnv
+from stable_baselines3.common.vec_env import SubprocVecEnv
 from tqdm import tqdm
 
 from utils.radam import RAdam
