@@ -52,10 +52,8 @@ def main():
     tensor_list_getter = TensorListGetterOneToOne()
     tensor_collector = TensorCollector(TensorInserterSeq([
         TensorInserterTensorizeScaled(DataKey.states, ModelKey.state_scaler, TensorKey.states_tensor, torch.float),
-        TensorInserterForward(TensorKey.states_tensor, ModelKey.state_encoder,
-                              TensorKey.encoded_states_tensor),
-        TensorInserterForward(TensorKey.encoded_states_tensor, ModelKey.state_decoder,
-                              TensorKey.decoded_states_tensor),
+        TensorInserterForward(TensorKey.states_tensor, ModelKey.state_encoder, TensorKey.encoded_states_tensor),
+        TensorInserterForward(TensorKey.encoded_states_tensor, ModelKey.state_decoder, TensorKey.decoded_states_tensor),
     ]), tensor_list_getter)
 
     mse_loss = MSELoss()
@@ -64,10 +62,10 @@ def main():
         LossCalculatorNearestNeighborL2(TensorKey.encoded_states_tensor, TensorKey.origins_tensor, 1.),
     ])
 
-    optimizer = RAdam(params=learnable_parameters, lr=3e-4)
+    optimizer = RAdam(params=learnable_parameters, lr=3e-6)
 
     optim = HeterogeneousLearner(loss_calculator, tensor_collector, optimizer, 1000)
-    for episode in range(1000):
+    for episode in range(3):
         loss = optim.train_one_episode(data_dicts, model_dicts, batch_size=5000)
         print("Episode {:d}\tLoss: {:f}".format(episode, loss))
 
