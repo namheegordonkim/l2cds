@@ -31,6 +31,8 @@ def expert_act(input_state, input_phase, input_state_scaler, expert_actor):
 
 def render_one_way_correspondence(factory, model_dicts, expert_dict):
     center, screen = initialize_pygame()
+
+    # For pendulum phase visualization
     diagram = PhaseSpaceDiagram(center)
     walker_to_pendulum_buffer = deque(maxlen=30)
     diagram.add_buffer(walker_to_pendulum_buffer, RED)
@@ -75,6 +77,8 @@ def render_one_way_correspondence(factory, model_dicts, expert_dict):
         screen.fill(WHITE)
         # draw everything
         env.render()
+
+        # draw pendulum phase
         diagram.render(screen)
         pygame.display.flip()
 

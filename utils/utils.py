@@ -7,6 +7,7 @@ import pygame
 import torch
 import torch.multiprocessing as mp
 import yaml
+from pygame import OPENGL, GL_DEPTH_SIZE
 from stable_baselines3.common.vec_env import SubprocVecEnv
 from tqdm import tqdm
 
@@ -252,6 +253,9 @@ def initialize_pygame():
     size = width, height = 640, 480
     center = width / 2, height / 2
     screen = pygame.display.set_mode(size)
+    pygame.display.gl_set_attribute(GL_DEPTH_SIZE, 24)
+    pygame.display.set_mode(size, OPENGL)
+
     return center, screen
 
 
