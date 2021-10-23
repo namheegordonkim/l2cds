@@ -20,6 +20,8 @@ Following Python packages are required (not comprehensive):
 
 ### With Docker / Singularity
 
+**NOTE:** Visualization with GLUT window isn't really supported inside containers. For visualization, I recommend using the non-container route, although it involves more headache.
+
 A Dockerfile is provided for your convenience. The pre-built image is found on Docker Hub: https://hub.docker.com/r/namheegordonkim/l2cds
 
 If you use Docker, use
