@@ -272,10 +272,14 @@ class ScalerWrapper(nn.Module):
 
     def forward(self, x):
         x = x.cpu().detach().numpy()
+        if len(x.shape) == 1:
+            x = x.reshape(1, -1)
         return torch.as_tensor(self.scaler.transform(x)).float().to(device)
 
     def reverse(self, x):
         x = x.cpu().detach().numpy()
+        if len(x.shape) == 1:
+            x = x.reshape(1, -1)
         return torch.as_tensor(self.scaler.inverse_transform(x)).float().to(device)
 
 
