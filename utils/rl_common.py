@@ -262,8 +262,8 @@ class ActionGetterFromState(ActionGetter):
         self.actor = actor
 
     def get_action(self, state):
-        state_tensor = torch.as_tensor(state).reshape(1, -1).float().to(device)
-        state_scaled_tensor = self.state_scaler.forward(state_tensor)
+        state_tensor = torch.as_tensor(state).reshape(1, -1).float().cpu()
+        state_scaled_tensor = self.state_scaler.forward(state_tensor).cpu()
         action_tensor, _ = self.actor.forward(state_scaled_tensor)
         action = action_tensor.cpu().detach().numpy().reshape(-1, )
         return action
