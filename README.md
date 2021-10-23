@@ -73,8 +73,11 @@ pip install -e ".[dart]"
 
 ## Running Experiments
 
-When running within the docker container, use `python3`. If using your own OS, use `python`
-.
+* When running within the docker container, use `python3`. If not, use `python3` or `python`, whichever works. 
+
+* The training scripts will dump snapshots at a specified interval (`save_every` in config files), and these will be used for computing correspondence.
+
+* By default, the config files specify experiments to run for large numbers of iterations. However, you can babysit for the loss value and terminate the experiment whenever, and use the latest dumped artifacts.
 
 ### Shapes Experiments
 
