@@ -102,13 +102,12 @@ class CorrespondenceEvaluator(RewardGetter):
 
 def correspond(input_state, input_state_scaler, output_state_scaler, input_state_encoder, output_state_decoder):
     # input_state_tensor = torch.as_tensor(input_state).reshape(1, -1).float().to(device)
-    input_state_tensor = torch.as_tensor(input_state).float().to(device)
-    input_state_scaled_tensor = input_state_scaler.forward(input_state_tensor)
+    input_state_tensor = torch.as_tensor(input_state).float().cpu()
+    input_state_scaled_tensor = input_state_scaler.forward(input_state_tensor).cpu()
     encoded_state_tensor, _ = input_state_encoder.forward(input_state_scaled_tensor)
     output_state_scaled_tensor, _ = output_state_decoder.forward(encoded_state_tensor)
     output_state_tensor = output_state_scaler.reverse(output_state_scaled_tensor)
-    # output_state = output_state_tensor.cpu().detach().numpy().reshape(-1, )
-    output_state = output_state_tensor.cpu().detach().numpy()
+    output_state = output_state_tensor.cpu().detach().numpy().reshape(-1, )
     return output_state
 
 
