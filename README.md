@@ -12,7 +12,7 @@ This software package has been tested on the following environment:
 
 Following Python packages are required (not comprehensive):
 * scikit-learn==0.22.0 (importing pre-computed results will break otherwise)
-* PyTorch (torch==1.19.0+cu111 recommended)
+* PyTorch (torch==1.9.1+cu111 recommended)
 * PyDart2
 * matplotlib
 * tqdm
