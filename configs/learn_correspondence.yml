@@ -1,7 +1,7 @@
 walker2d_to_pendulum2d:
   latent_state_dim: 2
   latent_hidden_dims: [256, 256]
-  dataset_paths: ['./data/walker2d_reg_0100000.pkl', './data/pendulum2d_1.0_200_0100000.pkl']
+  dataset_paths: ['./data/walker2d_reg_0100000.pkl', './data/pendulum2d_0100000.pkl']
   num_episodes: 100
   num_epochs: 1000
   save_every: 1
@@ -15,7 +15,7 @@ walker2d_to_pendulum2d:
 ostrich2d_to_pendulum2d:
   latent_state_dim: 2
   latent_hidden_dims: [256, 256]
-  dataset_paths: ['./data/ostrich2d_0100000.pkl', './data/pendulum2d_1.0_200_0100000.pkl']
+  dataset_paths: ['./data/ostrich2d_0100000.pkl', './data/pendulum2d_0100000.pkl']
   num_episodes: 100
   num_epochs: 1000
   save_every: 1
