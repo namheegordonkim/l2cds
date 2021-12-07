@@ -46,8 +46,9 @@ def render_one_way_correspondence(factory, model_dicts, expert_dict):
         env.dart_world.add_skeleton("./custom_dart_assets/pendulum2d.sdf")
 
     if "to_pendulum2d" in args.config_name:
-        pass
-    if "pendulum2d_to" in args.config_name:
+        model_dict_source: ModelDict = list(model_dicts.values())[0]
+        model_dict_target: ModelDict = list(model_dicts.values())[1]
+    elif "pendulum2d_to" in args.config_name:
         model_dict_source: ModelDict = list(model_dicts.values())[1]
         model_dict_target: ModelDict = list(model_dicts.values())[0]
     elif "walker2d_to" in args.config_name:
@@ -83,7 +84,7 @@ def render_one_way_correspondence(factory, model_dicts, expert_dict):
         pygame.display.flip()
 
         state_source_ = state_source.copy()[:-1]
-        if env.phase >= 10:
+        if "pendulum2d_to" not in args.config_name and env.phase >= 10:
             state_source_ = env.state_getter._mirror_state(state_source_)
 
         state_source_to_target = correspond(state_source_, state_scaler_source, state_scaler_target,
